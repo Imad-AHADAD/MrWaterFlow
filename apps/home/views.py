@@ -35,9 +35,9 @@ def precipitation_predictions(request):
 
     # Load the dataset if not already loaded
     if dataset is None:
-        file_path = 'apps/static/assets/dataset/water_dataset_v2.xlsx'
+        file_path = 'apps/static/assets/dataset/water_dataset_v2.csv'
         try:
-            dataset = pd.read_excel(file_path)
+            dataset = pd.read_csv(file_path)
             print("Fichier Excel chargé avec succès")
         except Exception as e:
             print(f"Erreur lors du chargement du fichier Excel: {e}")
@@ -55,3 +55,31 @@ def precipitation_predictions(request):
     graph_html = pio.to_html(fig, full_html=False)
 
     return render(request, 'home/precipitations.html', {'graph_html': graph_html})
+
+
+@login_required(login_url="/login/")
+def charte_station(request):
+    global dataset
+
+    # Load the dataset if not already loaded
+    if dataset is None:
+        file_path = 'apps/static/assets/dataset/water_dataset_v2.csv'
+        try:
+            dataset = pd.read_csv(file_path)
+            print("Fichier Excel chargé avec succès")
+        except Exception as e:
+            print(f"Erreur lors du chargement du fichier Excel: {e}")
+            return render(request, 'home/visualisation.html', {'graph_html': ''})
+
+    # Filtrer les données pour les colonnes nécessaires
+    stations = dataset[['NAME', 'LATITUDE', 'LONGITUDE']].drop_duplicates()
+
+    # Créer une carte des stations météorologiques
+    fig_map = px.scatter_geo(stations,
+                            lat='LATITUDE',
+                            lon='LONGITUDE',
+                            hover_name='NAME',
+                            title='Carte des Stations Météorologiques au Maroc')
+    graph_html = pio.to_html(fig_map, full_html=False)
+
+    return render(request, 'home/visualisation.html', {'graph_html': graph_html})

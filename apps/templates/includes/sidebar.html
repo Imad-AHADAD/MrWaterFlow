@@ -25,10 +25,10 @@
                         <p>Précipitations</p>
                     </a>
                 </li>
-                <li class="{% if 'visualisation' in segment %} active {% endif %}">
-                    <a href="visualisation.html">
+                <li class="{% if 'charte_station' in segment %} active {% endif %}">
+                    <a href={% url 'charte_station' %}>
                         <i class="tim-icons icon-notes"></i>
-                        <p>Visualisation</p>
+                        <p>Charte</p>
                     </a>
                 </li>
                 <li class="{% if 'dataset' in segment %} active {% endif %}">
