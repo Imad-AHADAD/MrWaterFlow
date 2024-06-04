@@ -85,7 +85,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mr_water_flow',
         'USER': 'postgres',
-        'PASSWORD': 'Im@d131#',
+        # 'PASSWORD': 'Im@d131#',
+        'PASSWORD': '0000',
         'HOST': 'localhost',
         'PORT': '5432',
     }

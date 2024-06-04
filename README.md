@@ -74,7 +74,7 @@ $ python manage.py migrate
 > Start the app
 
 ```bash
-$ python manage.py runserver
+$ python manage.py runserver 9999
 ```
 
 At this point, the app runs at `http://127.0.0.1:8000/`. 
