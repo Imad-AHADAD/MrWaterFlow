@@ -1,0 +1,207 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card ">
+          <div class="card-header">
+            <h4 class="card-title"> Dataset </h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table tablesorter " id="">
+                <thead class=" text-primary">
+                  <tr>
+                    <th>
+                      Name
+                    </th>
+                    <th>
+                      Country
+                    </th>
+                    <th>
+                      City
+                    </th>
+                    <th class="text-center">
+                      Salary
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      Dakota Rice
+                    </td>
+                    <td>
+                      Niger
+                    </td>
+                    <td>
+                      Oud-Turnhout
+                    </td>
+                    <td class="text-center">
+                      $36,738
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Minerva Hooper
+                    </td>
+                    <td>
+                      Curaçao
+                    </td>
+                    <td>
+                      Sinaai-Waas
+                    </td>
+                    <td class="text-center">
+                      $23,789
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Sage Rodriguez
+                    </td>
+                    <td>
+                      Netherlands
+                    </td>
+                    <td>
+                      Baileux
+                    </td>
+                    <td class="text-center">
+                      $56,142
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Philip Chaney
+                    </td>
+                    <td>
+                      Korea, South
+                    </td>
+                    <td>
+                      Overland Park
+                    </td>
+                    <td class="text-center">
+                      $38,735
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Doris Greene
+                    </td>
+                    <td>
+                      Malawi
+                    </td>
+                    <td>
+                      Feldkirchen in Kärnten
+                    </td>
+                    <td class="text-center">
+                      $63,542
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Mason Porter
+                    </td>
+                    <td>
+                      Chile
+                    </td>
+                    <td>
+                      Gloucester
+                    </td>
+                    <td class="text-center">
+                      $78,615
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Jon Porter
+                    </td>
+                    <td>
+                      Portugal
+                    </td>
+                    <td>
+                      Gloucester
+                    </td>
+                    <td class="text-center">
+                      $98,615
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card ">
+          <div class="card-header">
+            <h4 class="card-title"> Dataset </h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table tablesorter " id="">
+                <thead class="text-primary">
+                  <tr>
+                    <th>STATION</th>
+                    <th>NAME</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>ELEVATION</th>
+                    <th>DATE</th>
+                    <th>PRCP</th>
+                    <th>PRCP_ATTRIBUTES</th>
+                    <th>SNWD</th>
+                    <th>SNWD_ATTRIBUTES</th>
+                    <th>TAVG</th>
+                    <th>TAVG_ATTRIBUTES</th>
+                    <th>TMAX</th>
+                    <th>TMAX_ATTRIBUTES</th>
+                    <th>TMIN</th>
+                    <th>TMIN_ATTRIBUTES</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in data %}
+                  <tr>
+                    <td>{{ row.STATION }}</td>
+                    <td>{{ row.NAME }}</td>
+                    <td>{{ row.LATITUDE }}</td>
+                    <td>{{ row.LONGITUDE }}</td>
+                    <td>{{ row.ELEVATION }}</td>
+                    <td>{{ row.DATE }}</td>
+                    <td>{{ row.PRCP }}</td>
+                    <td>{{ row.PRCP_ATTRIBUTES }}</td>
+                    <td>{{ row.SNWD }}</td>
+                    <td>{{ row.SNWD_ATTRIBUTES }}</td>
+                    <td>{{ row.TAVG }}</td>
+                    <td>{{ row.TAVG_ATTRIBUTES }}</td>
+                    <td>{{ row.TMAX }}</td>
+                    <td>{{ row.TMAX_ATTRIBUTES }}</td>
+                    <td>{{ row.TMIN }}</td>
+                    <td>{{ row.TMIN_ATTRIBUTES }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

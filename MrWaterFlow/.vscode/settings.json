@@ -1,0 +1,8 @@
+
+{
+    "files.autoSave": "afterDelay",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.defaultInterpreterPath": "env/Scripts/python",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt"
+}
+

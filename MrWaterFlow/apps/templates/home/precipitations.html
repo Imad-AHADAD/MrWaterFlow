@@ -1,0 +1,61 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Prédictions {% endblock %}
+
+{% block stylesheets %}
+<!-- Include any additional CSS here -->
+{% endblock stylesheets %}
+
+{% block content %}
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="col-sm-6 text-left">
+                        <h2 class="card-title">Prédictions des Précipitations</h2>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="map" class="map card-body card-chart">
+                        <form method="GET" action="{% url 'precipitation_predictions' %}">
+                            <div class="row">
+                                <div class="col-md-3 pr-md-1">
+                                    <div class="form-group">
+                                        <label for="station-select">Station</label>
+                                        <select id="station-select" name="station_name" class="form-control">
+                                            <option value="MELILLA, SP">MELILLA, SP</option>
+                                            <option value="BASSATINE, MO">BASSATINE, MO</option>
+                                            <option value="SALE, MO">SALE, MO</option>
+                                            <option value="OUARZAZATE, MO">OUARZAZATE, MO</option>
+                                            <option value="NOUASSEUR, MO">NOUASSEUR, MO</option>
+                                            <option value="KENITRA PORT LYAUTEY, MO">KENITRA PORT LYAUTEY, MO</option>
+                                            <option value="MENARA, MO">MENARA, MO</option>
+                                            <option value="ESSAOUIRA, MO">ESSAOUIRA, MO</option>
+                                            <option value="MIDELT, MO">MIDELT, MO</option>
+                                            <option value="ANFA, MO">ANFA</option>
+                                            <option value="OUJDA, MO">OUJDA, MO</option>
+                                            <option value="TANGIER CITY, MO">TANGIER CITY, MO</option>
+                                            <option value="SANIAT RMEL, MO">SANIAT RMEL, MO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 px-md-1 mt-3 pt-1">
+                                    <button type="submit" class="btn btn-fill btn-primary">Chercher</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div>
+                            {{ graph_html|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block javascripts %}
+<!-- Include any additional JS here -->
+{% endblock javascripts %}

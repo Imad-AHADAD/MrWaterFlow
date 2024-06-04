@@ -1,0 +1,77 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Dataset{% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"> Dataset </h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table tablesorter" id="">
+                <thead class="text-primary">
+                  <tr>
+                    <th>STATION</th>
+                    <th>NAME</th>
+                    <th>LATITUDE</th>
+                    <th>LONGITUDE</th>
+                    <th>ELEVATION</th>
+                    <th>DATE</th>
+                    <th>PRCP</th>
+                    <th>PRCP_ATTRIBUTES</th>
+                    <th>SNWD</th>
+                    <th>SNWD_ATTRIBUTES</th>
+                    <th>TAVG</th>
+                    <th>TAVG_ATTRIBUTES</th>
+                    <th>TMAX</th>
+                    <th>TMAX_ATTRIBUTES</th>
+                    <th>TMIN</th>
+                    <th>TMIN_ATTRIBUTES</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in data %}
+                  <tr>
+                    <td>{{ row.STATION }}</td>
+                    <td>{{ row.NAME }}</td>
+                    <td>{{ row.LATITUDE }}</td>
+                    <td>{{ row.LONGITUDE }}</td>
+                    <td>{{ row.ELEVATION }}</td>
+                    <td>{{ row.DATE }}</td>
+                    <td>{{ row.PRCP }}</td>
+                    <td>{{ row.PRCP_ATTRIBUTES }}</td>
+                    <td>{{ row.SNWD }}</td>
+                    <td>{{ row.SNWD_ATTRIBUTES }}</td>
+                    <td>{{ row.TAVG }}</td>
+                    <td>{{ row.TAVG_ATTRIBUTES }}</td>
+                    <td>{{ row.TMAX }}</td>
+                    <td>{{ row.TMAX_ATTRIBUTES }}</td>
+                    <td>{{ row.TMIN }}</td>
+                    <td>{{ row.TMIN_ATTRIBUTES }}</td>
+                  </tr>
+                  {% empty %}
+                  <tr>
+                    <td colspan="16">Aucune donnée disponible</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <!-- Debugging output -->
+              <pre>{{ data }}</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
