@@ -21,20 +21,26 @@
                 </li> {% endcomment %}
                 <li class="{% if 'map' in segment %} active {% endif %}">
                     <a href="precipitations.html">
-                        <i class="tim-icons icon-pin"></i>
+                        <i class="tim-icons icon-chart-bar-32"></i>
                         <p>Précipitations</p>
+                    </a>
+                </li>
+                <li class="{% if 'map' in segment %} active {% endif %}">
+                    <a href="predictions.html">
+                        <i class="tim-icons icon-pin"></i>
+                        <p>Prédictions</p>
                     </a>
                 </li>
                 <li class="{% if 'charte_station' in segment %} active {% endif %}">
                     <a href={% url 'charte_station' %}>
-                        <i class="tim-icons icon-notes"></i>
+                        <i class="tim-icons icon-world"></i>
                         <p>Charte</p>
                     </a>
                 </li>
                 <li class="{% if 'dataset' in segment %} active {% endif %}">
                     <a href="dataset.html">
                         <i class="tim-icons icon-components"></i>
-                        <p>Dataset</p>
+                        <p>Données des Précipitations</p>
                     </a>
                 </li>
                 <li class="{% if 'icons' in segment %} active {% endif %}">
@@ -80,12 +86,12 @@
                         <p>RTL Support</p>
                     </a>
                 </li> {% endcomment %}
-                <li>
+                {% comment %} <li>
                     <a href="{% url 'login' %}">
                         <i class="tim-icons icon-button-power"></i>
                         <p>Logout</p>
                     </a>
-                </li>
+                </li> {% endcomment %}
             </ul>
         </div>
     </div>
