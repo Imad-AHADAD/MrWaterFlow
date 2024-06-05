@@ -28,8 +28,8 @@ def pages(request):
         return render(request, 'home/' + load_template, context)
     except template.TemplateDoesNotExist:
         return render(request, 'home/page-404.html', context)
-    except Exception as e:
-        return render(request, 'home/page-500.html', context)
+    #except Exception as e:
+     #   return render(request, 'home/page-500.html', context)
 
 @login_required(login_url="/login/")
 def precipitation_predictions(request):
@@ -96,13 +96,13 @@ def precipitation_data(request):
         file_path = 'apps/static/assets/dataset/water_dataset_v2.csv'
         try:
             dataset = pd.read_csv(file_path)
-            print("Fichier Excel chargé avec succès")
+            print("Fichier CSV chargé avec succès")
         except Exception as e:
             print(f"Erreur lors du chargement du fichier Excel: {e}")
             return render(request, 'home/dataset.html', {'data': []})
 
     # Get the first 50 rows of the dataset
-    data_records = dataset.head(50).to_dict('records')
+    data_records = dataset.head(1000).to_dict('records')
 
     # Render the template with the data
     return render(request, 'home/dataset.html', {'data': data_records})

@@ -12,7 +12,8 @@ urlpatterns = [
     path('', views.index, name='home'),
     path('precipitation_predictions/', views.precipitation_predictions, name='precipitation_predictions'),
     path('charte_station/', views.charte_station, name='charte_station'),
+    path('precipitation_data/', views.precipitation_data, name='precipitation_data'),   
     re_path(r'^.*\.*', views.pages, name='pages'),
-    path('precipitation_data/', views.precipitation_data, name='precipitation_data'),
+
 ]
 
