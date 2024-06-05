@@ -37,9 +37,9 @@
                         <p>Charte</p>
                     </a>
                 </li>
-                <li class="{% if 'dataset' in segment %} active {% endif %}">
-                    <a href="dataset.html">
-                        <i class="tim-icons icon-components"></i>
+                <li class="{% if 'precipitation_data' in segment %} active {% endif %}">
+                    <a href={% url 'precipitation_data' %}>
+                        <i class="tim-icons icon-world"></i>
                         <p>Données des Précipitations</p>
                     </a>
                 </li>

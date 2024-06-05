@@ -25,19 +25,11 @@
                     <th>ELEVATION</th>
                     <th>DATE</th>
                     <th>PRCP</th>
-                    <th>PRCP_ATTRIBUTES</th>
-                    <th>SNWD</th>
-                    <th>SNWD_ATTRIBUTES</th>
                     <th>TAVG</th>
-                    <th>TAVG_ATTRIBUTES</th>
-                    <th>TMAX</th>
-                    <th>TMAX_ATTRIBUTES</th>
-                    <th>TMIN</th>
-                    <th>TMIN_ATTRIBUTES</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {% for row in data %}
+                  {% for row in page_obj %}
                   <tr>
                     <td>{{ row.STATION }}</td>
                     <td>{{ row.NAME }}</td>
@@ -46,15 +38,7 @@
                     <td>{{ row.ELEVATION }}</td>
                     <td>{{ row.DATE }}</td>
                     <td>{{ row.PRCP }}</td>
-                    <td>{{ row.PRCP_ATTRIBUTES }}</td>
-                    <td>{{ row.SNWD }}</td>
-                    <td>{{ row.SNWD_ATTRIBUTES }}</td>
                     <td>{{ row.TAVG }}</td>
-                    <td>{{ row.TAVG_ATTRIBUTES }}</td>
-                    <td>{{ row.TMAX }}</td>
-                    <td>{{ row.TMAX_ATTRIBUTES }}</td>
-                    <td>{{ row.TMIN }}</td>
-                    <td>{{ row.TMIN_ATTRIBUTES }}</td>
                   </tr>
                   {% empty %}
                   <tr>
@@ -63,8 +47,25 @@
                   {% endfor %}
                 </tbody>
               </table>
+              <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+              </div>
               <!-- Debugging output -->
-              <pre>{{ data }}</pre>
+              <pre>{{ page_obj }}</pre>
             </div>
           </div>
         </div>
