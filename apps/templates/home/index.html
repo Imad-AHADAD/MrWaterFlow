@@ -1,6 +1,7 @@
 {% extends "layouts/base.html" %}
+{% load static %}
 
-{% block title %} Dashboard {% endblock %} 
+{% block title %} Dashboard {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}
@@ -11,24 +12,70 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 80vh;
+        height: 100vh; /* Full height */
+        width: 100vw; /* Full width */
         text-align: center;
-        background-image: url('path/to/morocco-map.jpg'); /* Remplacez par le chemin de votre image */
+        background-image: url('{% static "assets/img/wmarocPalestine.png" %}');
         background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden; /* Ensure raindrops are contained */
+        padding: 0 10vw; /* Large margins on left and right */
     }
     .intro-text {
-        font-size: 2em;
+        font-family: 'Arial', sans-serif; /* Changed font */
+        font-size: 2.5em;
         font-weight: bold;
         color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        animation: fadeInDown 2s ease-in-out, bounce 2s 2s infinite;
+        z-index: 1; /* Ensure the text is above the raindrops */
+        margin: 0 auto; /* Center the text */
+        max-width: 80%; /* Ensure the text doesn't exceed container width */
+    }
+    @keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-30px);
+        }
+        60% {
+            transform: translateY(-15px);
+        }
     }
     .animated-figure {
         position: absolute;
         top: 10%;
         left: 10%;
-        width: 100px; /* Ajustez selon vos besoins */
-        height: 100px; /* Ajustez selon vos besoins */
+        width: 100px; /* Adjust as needed */
+        height: 100px; /* Adjust as needed */
+        z-index: 1; /* Ensure the figure is above the raindrops */
+    }
+
+    /* Raindrop Styles */
+    .raindrop {
+        position: absolute;
+        top: -10px;
+        width: 2px;
+        height: 15px;
+        background: rgba(255, 255, 255, 0.6);
+        animation: fall linear infinite;
+    }
+    @keyframes fall {
+        to {
+            transform: translateY(110vh);
+        }
     }
 </style>
 {% endblock stylesheets %}
@@ -37,30 +84,28 @@
 
 <div class="content">
     <div class="intro-container">
+        <!-- Raindrops will be added by JavaScript -->
         <div class="animated-figure animate__animated animate__bounce">
-            <img src="path/to/your-figure.png" alt="Figure" class="img-fluid"> <!-- Remplacez par le chemin de votre figure -->
+            <img src="{% static 'assets/img/wmarocPalestine.png' %}" alt="Figure" class="img-fluid"> <!-- Replace with the path to your figure -->
         </div>
-        <div class="intro-text animate__animated animate__fadeIn">
-            Bienvenue dans notre application d'analyse de données massives pour l'amélioration de la gestion de l'eau au Maroc.
+        <div class="intro-text">
+            Bienvenue dans notre application d'analyse de données massives des Précipitations.
         </div>
     </div>
 </div>
 
-{% endblock content %}
-
-<!-- Specific Page JS goes HERE  -->
-{% block javascripts %}
 <script>
-    $(document).ready(function () {
-        // Animation sequence
-        setTimeout(function () {
-            $('.intro-text').removeClass('animate__fadeIn').addClass('animate__fadeOut');
-        }, 3000); // Fade out after 3 seconds
+    // JavaScript to generate raindrops
+    const introContainer = document.querySelector('.intro-container');
+    const raindropCount = 50;
 
-        setTimeout(function () {
-            $('.intro-text').text('Explorez nos outils et visualisations pour une gestion optimisée de l'eau.');
-            $('.intro-text').removeClass('animate__fadeOut').addClass('animate__fadeIn');
-        }, 5000); // Change text and fade in after 5 seconds
-    });
+    for (let i = 0; i < raindropCount; i++) {
+        const raindrop = document.createElement('div');
+        raindrop.classList.add('raindrop');
+        raindrop.style.left = Math.random() * 100 + 'vw';
+        raindrop.style.animationDuration = Math.random() * 2 + 2 + 's'; // Between 2s and 4s
+        introContainer.appendChild(raindrop);
+    }
 </script>
-{% endblock javascripts %}
+
+{% endblock content %}

@@ -43,12 +43,12 @@
                         <p>Données des Précipitations</p>
                     </a>
                 </li>
-                <li class="{% if 'icons' in segment %} active {% endif %}">
+                {% comment %} <li class="{% if 'icons' in segment %} active {% endif %}">
                     <a href="/icons.html">
                         <i class="tim-icons icon-atom"></i>
                         <p>Icons</p>
                     </a>
-                </li>
+                </li> {% endcomment %}
                 {% comment %} <li class="{% if 'map' in segment %} active {% endif %}">
                     <a href="/map.html">
                         <i class="tim-icons icon-pin"></i>
@@ -67,13 +67,12 @@
                         <p>User Profile</p>
                     </a>
                 </li> {% endcomment %}
-                <li class="{% if 'tables' in segment %} active {% endif %}">
+                {% comment %} <li class="{% if 'tables' in segment %} active {% endif %}">
                     <a href="/tables.html">
-                        {% comment %} <i class="tim-icons icon-puzzle-10"></i> {% endcomment %}
                         <i class="tim-icons icon-components"></i>
                         <p>Tables</p>
                     </a>
-                </li>
+                </li> {% endcomment %}
                 {% comment %} <li class="{% if 'typography' in segment %} active {% endif %}">
                     <a href="/typography.html">
                         <i class="tim-icons icon-align-center"></i>
